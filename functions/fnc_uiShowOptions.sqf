@@ -42,7 +42,7 @@ private _xPosSide = (_ctrlPos # 0) + (_ctrlPos # 2);
 [] call GVAR(fnc_uiHideInventoryDropdownItems);
 
 {
-	_x params ["_class", "", "_displayText", "_descText"];
+	_x params ["_class", "", ["_displayText", "CHNG"], ["_descText", "CHNG_"]];
 
 	uiNamespace setVariable [
 		format[SVAR(Inventory_DropdownItem_%1), _forEachIndex]

@@ -12,3 +12,5 @@ COMPILE_FUNCTION(fnc_uiAddInventoryDisplayHandler);
 COMPILE_FUNCTION(fnc_uiHandleInventoryDropdownClick);
 COMPILE_FUNCTION(fnc_uiHideInventoryDropdownItems);
 COMPILE_FUNCTION(fnc_uiShowOptions);
+
+COMPILE_FUNCTION(fnc_configure); // dzn_OwO_fnc_configure
