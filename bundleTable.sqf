@@ -3,19 +3,26 @@
 GVAR(Uniforms) = [
 	#include "bundleTable_Uniform_A3.h"
 	,
-	 #include "bundleTable_Uniform_CUP.h"
+	#include "bundleTable_Uniform_CUP.h"
+	/* ,
+	#include "bundleTable_Uniform_RHS.h"
+	*/
 ];
 
 GVAR(Headgear) = [
 	#include "bundleTable_Headgear_A3.h"
 	, 
 	#include "bundleTable_Headgear_CUP.h"
+	, 
+	#include "bundleTable_Headgear_RHS.h"
 ];
 
 GVAR(Accessories) = [
 	#include "bundleTable_Goggles_A3.h"
 	, 
 	#include "bundleTable_Goggles_CUP.h"
+	, 
+	#include "bundleTable_Goggles_RHS.h"
 ];
 
 GVAR(StringShortcuts) = [
@@ -65,7 +72,7 @@ GVAR(StringShortcuts) = [
 	,"RJK", "No jacket/kneepads"
 	,"RJK_", "Jacket was removed and kneepads was put on"
 
-	,"GO", "Gloveso only"
+	,"GO", "Gloves only"
 	,"GO_", "Gloves only was put on"
 
 
@@ -82,11 +89,26 @@ GVAR(StringShortcuts) = [
 	,"HF1", "Headphones on (alt)"
 	,"HF1_", "Headphones (alt) were put on"
 
+	,"HFG", "Headphones/Goggles"
+	,"HFG_", "Headphones & goggles were put on"
+
+	,"HFA", "Headphones/Acc."
+	,"HFA_", "Headphones and accessories were put on"
+
 	,"PB", "Put back"
 	,"PB_", "Cap was put backward"
 
 	,"PBHF", "Put back/Headphones"
 	,"PBHF_", "Cap was put backward and headphones put on"
+
+	,"VD", "Visor down"
+	,"VD_", "Visor was put down"
+
+	,"VU", "Visor up"
+	,"VU_", "Visor was put up"
+
+	,"VDM", "Mask/Visor down"
+	,"VDM_", "Mask/Visor was put down"
 	
 	/* Accessories */
 	,"GL1", "Goggles 1"	
@@ -97,4 +119,7 @@ GVAR(StringShortcuts) = [
 
 	,"GL3", "Goggles 3"
 	,"GL3_", "Google 3 put on"
+
+	,"RMG", "Remove mask/Googles"
+	,"RMG_", "Mask was removed and goggles was put on"
 ];
