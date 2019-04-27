@@ -1,6 +1,7 @@
 #include "macro.hpp"
 
 COMPILE_FUNCTION(fnc_cacheBundleData);
+COMPILE_FUNCTION(fnc_cachePlayerItemData);
 COMPILE_FUNCTION(fnc_getItemOptions);
 COMPILE_FUNCTION(fnc_getTextByShortcut);
 COMPILE_FUNCTION(fnc_switchUniform);

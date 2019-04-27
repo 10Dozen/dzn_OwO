@@ -44,28 +44,43 @@ Author:
 if (!isNil SVAR(handleInventory)) exitWith {}; // Prevent double handler
 
 GVAR(handleInventory) = true;
-while { GVAR(handleInventory) } do {
-	// Wait until inventroy UI is opened 
-	waitUntil { sleep 0.25; !isNull INV_DISPLAY };
+GVAR(inventoryEH) = player addEventHandler [
+	"InventoryOpened"
+	, {
+		[] call GVAR(fnc_cachePlayerItemData);
 
-	// Add handler for inventory slots 
-	{
-		_x params ["_ctrl", "_type"];
+		[] spawn {
+			// Add handler for inventory slots 
+			waitUntil { !isNull INV_DISPLAY };
+			
+			{
+				_x params ["_ctrl", "_type", "_hasOptions"];
 
-		_ctrl ctrlAddEventHandler [
-			"MouseButtonDblClick"
-			, format ["[_this, ""%1""] spawn %2", _type, SVAR(fnc_uiShowOptions)]
-		];
-	} forEach [
-		 [UNIFORM_CTRL, "UNIFORM"]
-		,[HEADGEAR_CTRL, "HEADGEAR"]
-		,[GOGGLES_CTRL, "GOGGLES"]
-	];
+				if (_hasOptions) then {
 
-	// Hide dropdown on click anywhere outside dropdown
-	{
-		_x ctrlSetEventHandler ["MouseButtonClick", "[] call " + SVAR(fnc_uiHideInventoryDropdownItems)];
-	} forEach allControls INV_DISPLAY;
+					_ctrl ctrlAddEventHandler [
+						"MouseButtonDblClick"
+						, format ["[_this, ""%1""] spawn %2", _type, SVAR(fnc_uiShowOptions)]
+					];
 
-	waituntil { sleep 0.25; isNull INV_DISPLAY };
-};
+					private _ctrlPos = (ctrlPosition _ctrl);
+					private _ctrlIcon = [
+						"",{},[],false
+						,(_ctrlPos # 0),(_ctrlPos # 1),(safeZoneH / 100),(safeZoneW / 100)
+						,["GUI","BCG_RGB"] call BIS_fnc_displayColorGet
+					] call GVAR(fnc_uiAddInventoryDropdownItem);
+
+				};
+			} forEach [
+				[UNIFORM_CTRL, "UNIFORM", GVAR(uniformOptionsAvailable)]
+				,[HEADGEAR_CTRL, "HEADGEAR", GVAR(headgearOptionsAvailable)]
+				,[GOGGLES_CTRL, "GOGGLES", GVAR(gogglesOptionsAvailable)]
+			];
+
+			// Hide dropdown on click anywhere outside dropdown
+			{
+				_x ctrlSetEventHandler ["MouseButtonClick", "[] call " + SVAR(fnc_uiHideInventoryDropdownItems)];
+			} forEach allControls INV_DISPLAY;
+		};
+	}
+];

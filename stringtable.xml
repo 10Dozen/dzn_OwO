@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="dzn_OwO">
+	<Package name="dzn_OwO">
+		<Container name="Menus">
+			<!--
+			SETTINGS
+			-->
+			<Key ID="STR_OwO_Enabled">
+				<Original>Enable OWO</Original>
+			</Key>
+			<Key ID="STR_OwO_Enabled_desc">
+				<Original>Enables OWO in inventrory</Original>
+			</Key>
+
+			<Key ID="STR_OwO_ApplyToVanilla">
+				<Original>Apply for A3 items</Original>
+			</Key>
+			<Key ID="STR_OwO_ApplyToVanilla_desc">
+				<Original>Apply OWO feature to vanilla A3 items</Original>
+			</Key>
+
+			<Key ID="STR_OwO_ApplyToCUP">
+				<Original>Apply for CUP items</Original>
+			</Key>
+			<Key ID="STR_OwO_ApplyToCUP_desc">
+				<Original>Apply OWO feature to vanilla CUP items</Original>
+			</Key>
+
+			<Key ID="STR_OwO_ApplyToRHS">
+				<Original>Apply for RHS items</Original>
+			</Key>
+			<Key ID="STR_OwO_ApplyToRHS_desc">
+				<Original>Apply OWO feature to vanilla RHS items</Original>
+			</Key>
+
+			<Key ID="STR_OwO_ExtraMappingSettings">
+				<Original>Additional mapping</Original>
+			</Key>
+			<Key ID="STR_OwO_ExtraMappingSettings_desc">
+				<Original>Additional OWO mapping for items</Original>
+			</Key>
+		</Container>
+	</Package>
+</Project>

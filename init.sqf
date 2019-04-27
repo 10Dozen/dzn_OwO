@@ -13,6 +13,16 @@ call compile preprocessFileLineNumbers format ["%1\functions.sqf", PATH];
 
 	waitUntil { time > 0 && local player };
 
+	GVAR(uniformCached) = "";
+	GVAR(headgearCached) = "";
+	GVAR(gogglesCached) = "";
+
+	GVAR(uniformOptionsAvailable) = false;
+	GVAR(headgearOptionsAvailable) = false;
+	GVAR(gogglesOptionsAvailable) = false;
+
+	[] spawn GVAR(fnc_cachePlayerItemData);
+
 	// Start Inventory screen handler
 	[] spawn GVAR(fnc_uiAddInventoryDisplayHandler);
 };

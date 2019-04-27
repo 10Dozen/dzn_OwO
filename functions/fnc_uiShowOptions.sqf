@@ -51,7 +51,7 @@ private _xPosSide = (_ctrlPos # 0) + (_ctrlPos # 2);
 			, { _args call GVAR(fnc_uiHandleInventoryDropdownClick); }
 			, [_ctrlType, _class, _descText call GVAR(fnc_getTextByShortcut)]
 			, true
-			, _xPos max _xPosSide, _yPos, 0.2, 0.05
+			, _xPos max _xPosSide, _yPos, 0.3, 0.05
 		] call GVAR(fnc_uiAddInventoryDropdownItem)
 	];
 
