@@ -46,7 +46,7 @@ private _add = {
 	"ExtraMappingSettings"
 	, "EDITBOX"
 	, "" 
-	, { }
+	, {  }
 	/*
 	, str(GVAR(Mapping)) select [1, count str(GVAR(Mapping)) -2]
 	, { 

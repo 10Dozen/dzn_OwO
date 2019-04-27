@@ -41,46 +41,58 @@ Author:
 629 // HG Optics
 */
 
-if (!isNil SVAR(handleInventory)) exitWith {}; // Prevent double handler
+params [["_mode", "INIT"]];
 
-GVAR(handleInventory) = true;
-GVAR(inventoryEH) = player addEventHandler [
-	"InventoryOpened"
-	, {
-		[] call GVAR(fnc_cachePlayerItemData);
+switch (toUpper _mode) do {
+	case "INIT": {
+		
+		if (!isNil SVAR(handleInventory)) exitWith {};
 
-		[] spawn {
-			// Add handler for inventory slots 
-			waitUntil { !isNull INV_DISPLAY };
-			
-			{
-				_x params ["_ctrl", "_type", "_hasOptions"];
+		GVAR(handleInventory) = true;
+		GVAR(inventoryEH) = player addEventHandler [
+			"InventoryOpened"
+			,{
+				[] call GVAR(fnc_cachePlayerItemData);
 
-				if (_hasOptions) then {
+				["ADD_HANDLERS"] spawn GVAR(fnc_uiAddInventoryDisplayHandler);
+			}
+		];
 
-					_ctrl ctrlAddEventHandler [
-						"MouseButtonDblClick"
-						, format ["[_this, ""%1""] spawn %2", _type, SVAR(fnc_uiShowOptions)]
-					];
+	};
 
-					private _ctrlPos = (ctrlPosition _ctrl);
-					private _ctrlIcon = [
-						"",{},[],false
-						,(_ctrlPos # 0),(_ctrlPos # 1),(safeZoneH / 100),(safeZoneW / 100)
-						,["GUI","BCG_RGB"] call BIS_fnc_displayColorGet
-					] call GVAR(fnc_uiAddInventoryDropdownItem);
+	case "ADD_HANDLERS": {
 
-				};
-			} forEach [
-				[UNIFORM_CTRL, "UNIFORM", GVAR(uniformOptionsAvailable)]
-				,[HEADGEAR_CTRL, "HEADGEAR", GVAR(headgearOptionsAvailable)]
-				,[GOGGLES_CTRL, "GOGGLES", GVAR(gogglesOptionsAvailable)]
-			];
+		waitUntil { !isNull INV_DISPLAY };
 
-			// Hide dropdown on click anywhere outside dropdown
-			{
-				_x ctrlSetEventHandler ["MouseButtonClick", "[] call " + SVAR(fnc_uiHideInventoryDropdownItems)];
-			} forEach allControls INV_DISPLAY;
-		};
-	}
-];
+		// Hide dropdown on click anywhere outside dropdown
+		{
+			_x ctrlSetEventHandler ["MouseButtonClick", "[] call " + SVAR(fnc_uiHideInventoryDropdownItems)];
+		} forEach allControls INV_DISPLAY;
+
+		// Add handler for inventory slots
+		{
+			_x params ["_ctrl", "_type", "_hasOptions"];
+
+			if (_hasOptions) then {
+				_ctrl ctrlAddEventHandler [
+					"MouseButtonDblClick"
+					, format ["[_this, ""%1""] spawn %2", _type, SVAR(fnc_uiShowOptions)]
+				];
+
+				private _ctrlPos = (ctrlPosition _ctrl);
+				private _ctrlIcon = [
+					"",{},[],false
+					,(_ctrlPos # 0),(_ctrlPos # 1),(safeZoneH / 100),(safeZoneW / 100)
+					,["GUI","BCG_RGB"] call BIS_fnc_displayColorGet
+				] call GVAR(fnc_uiAddInventoryDropdownItem);
+			};
+		} forEach [
+			[UNIFORM_CTRL, "UNIFORM", GVAR(uniformOptionsAvailable)]
+			,[HEADGEAR_CTRL, "HEADGEAR", GVAR(headgearOptionsAvailable)]
+			,[GOGGLES_CTRL, "GOGGLES", GVAR(gogglesOptionsAvailable)]
+		];
+	};
+
+};
+
+(true)

@@ -37,7 +37,7 @@
 				<Original>Additional mapping</Original>
 			</Key>
 			<Key ID="STR_OwO_ExtraMappingSettings_desc">
-				<Original>Additional OWO mapping for items</Original>
+				<Original>Additional OWO mapping for items (execute [] spawn dzn_OwO_fnc_configure to generate data)</Original>
 			</Key>
 		</Container>
 	</Package>

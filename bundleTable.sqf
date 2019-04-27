@@ -1,60 +1,72 @@
 #include "macro.hpp"
 
-GVAR(Uniforms) = [
-	#include "bundleTable_Uniform_A3.h"
-	,
-	#include "bundleTable_Uniform_CUP.h"
-	/* ,
-	#include "bundleTable_Uniform_RHS.h"
-	*/
-];
+GVAR(Mapping) = [];
 
-GVAR(Headgear) = [
-	#include "bundleTable_Headgear_A3.h"
-	, 
-	#include "bundleTable_Headgear_CUP.h"
-	, 
-	#include "bundleTable_Headgear_RHS.h"
-];
+if (GVAR(ApplyToVanilla)) then {
+	GVAR(Mapping) append [
+		#include "bundleTable_Uniform_A3.h" 
+		,
+		#include "bundleTable_Headgear_A3.h"
+		,
+		#include "bundleTable_Goggles_A3.h"
+	];
+};
 
-GVAR(Accessories) = [
-	#include "bundleTable_Goggles_A3.h"
-	, 
-	#include "bundleTable_Goggles_CUP.h"
-	, 
-	#include "bundleTable_Goggles_RHS.h"
-];
+if (GVAR(ApplyToCUP)) then {
+	GVAR(Mapping) append [
+		#include "bundleTable_Uniform_CUP.h" 
+		,
+		#include "bundleTable_Headgear_CUP.h"
+		,
+		#include "bundleTable_Goggles_CUP.h"
+	];
+};
+
+if (GVAR(ApplyToRHS)) then {
+	GVAR(Mapping) append [
+		/*
+		#include "bundleTable_Uniform_RHS.h" 
+		,*/
+		#include "bundleTable_Headgear_RHS.h"
+		,
+		#include "bundleTable_Goggles_RHS.h"
+	];
+};
+
+if !(GVAR(ExtraMappingSettings) isEqualTo "") then {
+	GVAR(Mapping) append (call compile ("[" + GVAR(ExtraMappingSettings) + "]"));
+};
 
 GVAR(StringShortcuts) = [
 	 "CHNG", "Change"
 	,"CHNG_", "Changed"
 
 	/* Uniform */
-	,"F", "Fix"
-	,"F_", "Fixed"
+	,"F", "Default"
+	,"F_", "Changed to default"
 
-	,"R", "Roll up"
+	,"R", "Rolled up"
 	,"R_", "Sleeves was rolled up"
 
-	,"R2", "Roll up high"
+	,"R2", "Rolled up high"
 	,"R2_", "Sleeves was rolled up high"
 
-	,"RG", "Roll up/Gloves"
+	,"RG", "Rolled up/Gloves"
 	,"RG_", "Sleeves was rolled up and gloves was put on"
 
-	,"RG2", "Roll up/Gloves (High)"
+	,"RG2", "Rolled up/Gloves (High)"
 	,"RG2_", "Sleeves was rolled up high and gloves was put on"
 
-	,"RJ", "Remove jacket"
+	,"RJ", "Removed jacket"
 	,"RJ_", "Jacked was removed"
 
-	,"H", "Hood put on"
+	,"H", "Hood on"
 	,"H_", "Hood was put on"
 
-	,"G", "Gloves put on"
+	,"G", "Gloves"
 	,"G_", "Gloves were put on"
 
-	,"K", "Kneepads put on"
+	,"K", "Kneepads"
 	,"K_", "Kneepads were put on"
 
 	,"GK", "Gloves/Kneepads"
@@ -63,10 +75,10 @@ GVAR(StringShortcuts) = [
 	,"K1", "1 kneepad"
 	,"K1_", "Single kneepad was put on"
 
-	,"KR1", "Roll up/1 kneepad"
+	,"KR1", "Rolled up/1 kneepad"
 	,"KR1_", "Rolled up and single kneepad was put on"
 
-	,"KR2", "Roll up/kneepads"
+	,"KR2", "Rolled up/kneepads"
 	,"KR2_", "Rolled up and kneepads was put on"
 
 	,"RJK", "No jacket/kneepads"
@@ -95,10 +107,10 @@ GVAR(StringShortcuts) = [
 	,"HFA", "Headphones/Acc."
 	,"HFA_", "Headphones and accessories were put on"
 
-	,"PB", "Put back"
+	,"PB", "Backward"
 	,"PB_", "Cap was put backward"
 
-	,"PBHF", "Put back/Headphones"
+	,"PBHF", "Backward /Headphones"
 	,"PBHF_", "Cap was put backward and headphones put on"
 
 	,"VD", "Visor down"
@@ -111,15 +123,15 @@ GVAR(StringShortcuts) = [
 	,"VDM_", "Mask/Visor was put down"
 	
 	/* Accessories */
-	,"GL1", "Goggles 1"	
-	,"GL1_", "Google 1 put on"
+	,"GL1", "Goggles"	
+	,"GL1_", "Google put on"
 
-	,"GL2", "Goggles 2"
-	,"GL2_", "Google 2 put on"
+	,"GL2", "Goggles (alt)"
+	,"GL2_", "Google (alt) put on"
 
-	,"GL3", "Goggles 3"
-	,"GL3_", "Google 3 put on"
+	,"GL3", "Goggles (alt 2)"
+	,"GL3_", "Google (alt 2) put on"
 
-	,"RMG", "Remove mask/Googles"
+	,"RMG", "No mask/Googles"
 	,"RMG_", "Mask was removed and goggles was put on"
 ];
