@@ -25,6 +25,7 @@ Author:
 #define UNIFORM_CTRL INV_CTRL(6331)
 #define HEADGEAR_CTRL INV_CTRL(6240)
 #define GOGGLES_CTRL INV_CTRL(6216)
+#define POINTER_CTRL INV_CTRL(622)
 
 /*
 6381, // vest
@@ -41,7 +42,10 @@ Author:
 629 // HG Optics
 */
 
-params [["_mode", "INIT"]];
+params [
+	["_mode", "INIT"]
+	,["_data",[]]
+];
 
 switch (toUpper _mode) do {
 	case "INIT": {
@@ -51,48 +55,93 @@ switch (toUpper _mode) do {
 		GVAR(handleInventory) = true;
 		GVAR(inventoryEH) = player addEventHandler [
 			"InventoryOpened"
-			,{
-				[] call GVAR(fnc_cachePlayerItemData);
+			,{ ["ADD_HANDLERS"] spawn GVAR(fnc_uiAddInventoryDisplayHandler); }
+		];
 
-				["ADD_HANDLERS"] spawn GVAR(fnc_uiAddInventoryDisplayHandler);
-			}
+		GVAR(inventoryClosedEH) = player addEventHandler [
+			"InventoryClosed"
+			,{ ["RESET"] spawn GVAR(fnc_uiAddInventoryDisplayHandler); }
 		];
 
 	};
 
 	case "ADD_HANDLERS": {
+		// [] call GVAR(fnc_cachePlayerItemData);
 
 		waitUntil { !isNull INV_DISPLAY };
 
 		// Hide dropdown on click anywhere outside dropdown
 		{
-			_x ctrlSetEventHandler ["MouseButtonClick", "[] call " + SVAR(fnc_uiHideInventoryDropdownItems)];
+			_x ctrlSetEventHandler [
+				"MouseButtonClick"
+				, format ["['UPDATE'] call %1;", SVAR(fnc_uiHideInventoryDropdownItems)]
+			];
 		} forEach allControls INV_DISPLAY;
 
-		// Add handler for inventory slots
-		{
-			_x params ["_ctrl", "_type", "_hasOptions"];
+		[{
+			params ["", "_handle"];
 
-			if (_hasOptions) then {
-				_ctrl ctrlAddEventHandler [
-					"MouseButtonDblClick"
-					, format ["[_this, ""%1""] spawn %2", _type, SVAR(fnc_uiShowOptions)]
-				];
-
-				private _ctrlPos = (ctrlPosition _ctrl);
-				private _ctrlIcon = [
-					"",{},[],false
-					,(_ctrlPos # 0),(_ctrlPos # 1),(safeZoneH / 100),(safeZoneW / 100)
-					,["GUI","BCG_RGB"] call BIS_fnc_displayColorGet
-				] call GVAR(fnc_uiAddInventoryDropdownItem);
+			if (!isNull INV_DISPLAY) then {
+				["UPDATE"] call GVAR(fnc_uiAddInventoryDisplayHandler);
+			} else {
+				_handle call CBA_fnc_removePerFrameHandler;
 			};
-		} forEach [
-			[UNIFORM_CTRL, "UNIFORM", GVAR(uniformOptionsAvailable)]
-			,[HEADGEAR_CTRL, "HEADGEAR", GVAR(headgearOptionsAvailable)]
-			,[GOGGLES_CTRL, "GOGGLES", GVAR(gogglesOptionsAvailable)]
-		];
+		}, 0.2, []] call CBA_fnc_addPerFrameHandler;
+
+		["UPDATE"] call GVAR(fnc_uiAddInventoryDisplayHandler);
 	};
 
+	case "UPDATE": {
+
+		[] call GVAR(fnc_cachePlayerItemData);
+
+		{
+			_x params ["_ctrl", "_type", "_available"];
+
+			(uiNamespace getVariable [format [SVAR(Inventory_Items_%1), _type], [-1, controlNull]]) params ["_ctrlEH","_ctrlIcon"];
+
+			if (_available) then {
+				if (_ctrlEH < 0) then {
+					// Add EH if not exists yet
+					_ctrlEH = _ctrl ctrlAddEventHandler [
+						"MouseButtonDblClick"
+						, format ["[_this, ""%1""] spawn %2;", _type, SVAR(fnc_uiShowOptions)]
+					];
+				};
+
+				if (isNull _ctrlIcon) then {
+					// Add Icon if none
+					// Draw 'option available' icon
+					private _ctrlPos = (ctrlPosition _ctrl);
+					_ctrlIcon = [
+						"",{},[],false
+						,(_ctrlPos # 0),(_ctrlPos # 1),(safeZoneH / 100),(safeZoneW / 100)
+						,["GUI","BCG_RGB"] call BIS_fnc_displayColorGet
+					] call GVAR(fnc_uiAddInventoryDropdownItem);
+
+				};
+		
+				uiNamespace setVariable [format [SVAR(Inventory_Items_%1), _type], [_ctrlEH, _ctrlIcon]];
+			} else {
+				if (_ctrlEH >= 0) then { _ctrl ctrlRemoveEventHandler ["MouseButtonDblClick", _ctrlEH]; };
+				if (!isNull _ctrlIcon) then { ctrlDelete _ctrlIcon; };
+
+				uiNamespace setVariable [format [SVAR(Inventory_Items_%1), _type], nil];
+			};
+		} forEach [
+			 [UNIFORM_CTRL, "UNIFORM", GVAR(uniformOptionsAvailable)]
+			,[HEADGEAR_CTRL, "HEADGEAR", GVAR(headgearOptionsAvailable)]
+			,[GOGGLES_CTRL, "GOGGLES", GVAR(gogglesOptionsAvailable)]
+			,[POINTER_CTRL, "POINTER", GVAR(pointerOptionsAvailable)]
+		];
+	};
+	
+	case "RESET": {
+		{
+			uiNamespace setVariable [format [SVAR(Inventory_Items_%1), _x], nil];
+		} forEach ["UNIFORM","HEADGEAR","GOGGLES","POINTER"];
+	};
+	
 };
 
 (true)

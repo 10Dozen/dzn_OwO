@@ -26,6 +26,8 @@ params ["_ehData", "_ctrlType"];
 _ehData params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
 
 // Get options 
+
+/*
 private _item = switch (toUpper(_ctrlType)) do {
 	case "UNIFORM": { uniform player };
 	case "HEADGEAR": { headgear player };
@@ -33,6 +35,14 @@ private _item = switch (toUpper(_ctrlType)) do {
 };
 
 private _options = [_item] call GVAR(fnc_getItemOptions);
+*/
+
+private _options = switch (toUpper(_ctrlType)) do {
+	case "UNIFORM": { 	GVAR(uniformOptions) };
+	case "HEADGEAR": { 	GVAR(headgearOptions) };
+	case "GOGGLES": { 	GVAR(gogglesOptions) };
+	case "POINTER": {		GVAR(pointerOptions) };
+};
 if (_options isEqualTo []) exitWith { /* No options */ hint "No options for item"; };
 
 // Draw dropdown

@@ -43,8 +43,13 @@ switch (toUpper _ctrlType) do {
 		_itemCategory = "Goggles";
 		_result = [player, _class] call GVAR(fnc_switchGoggles);
 	};
+	case "POINTER": {
+		_itemCategory = "Pointer";
+		_result = [player, _class] call GVAR(fnc_switchPointer);
+	};
 };
 
 if (_result) then { 
 	hint format ["%1 changed: %2", _itemCategory, _descText];
+	[] spawn GVAR(fnc_cachePlayerItemData);
 };

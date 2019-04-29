@@ -48,4 +48,13 @@ if !(_goggles isEqualTo GVAR(gogglesCached)) then {
 	GVAR(gogglesOptions) = _gogglesOptions;
 };
 
+// Pointers caching 
+private _pointer = (player weaponAccessories (primaryWeapon player)) # 1;
+if !(_pointer isEqualTo GVAR(pointerCached)) then {
+	GVAR(pointerCached) = _pointer;
+	private _pointerOptions = [_pointer] call GVAR(fnc_getItemOptions);
+	GVAR(pointerOptionsAvailable) = !(_pointerOptions isEqualTo []);
+	GVAR(pointerOptions) = _pointerOptions;
+};
+
 (true)

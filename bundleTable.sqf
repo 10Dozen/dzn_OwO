@@ -33,9 +33,14 @@ if (GVAR(ApplyToRHS)) then {
 	];
 };
 
+GVAR(Mapping) append [
+	#include "bundleTable_Pointers.h"
+];
+
 if !(GVAR(ExtraMappingSettings) isEqualTo "") then {
 	GVAR(Mapping) append (call compile ("[" + GVAR(ExtraMappingSettings) + "]"));
 };
+
 
 GVAR(StringShortcuts) = [
 	 "CHNG", "Change"
@@ -134,4 +139,17 @@ GVAR(StringShortcuts) = [
 
 	,"RMG", "No mask/Googles"
 	,"RMG_", "Mask was removed and goggles was put on"
+
+	/* Pointer */
+	,"S", "Side mount"
+	,"S_", "Item mounted at side rail"
+
+	,"T", "Top mount"
+	,"T_", "Item mounted at top rail"
+
+	,"S2S", "Side to side"
+	,"S2S_", "Items mounted side to side"
+
+	,"Cross", "Cross side"
+	,"Cross_", "Items mounted cross side"
 ];

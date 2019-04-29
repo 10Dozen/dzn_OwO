@@ -1,9 +1,10 @@
 
+call compile preprocessFileLineNumbers format ["%1\settings.sqf", PATH];
+
 if (!hasInterface) exitWith {};
 
 #include "macro.hpp"
 
-call compile preprocessFileLineNumbers format ["%1\Settings.sqf", PATH];
 call compile preprocessFileLineNumbers format ["%1\bundleTable.sqf", PATH];
 call compile preprocessFileLineNumbers format ["%1\functions.sqf", PATH];
 
@@ -18,10 +19,12 @@ call compile preprocessFileLineNumbers format ["%1\functions.sqf", PATH];
 	GVAR(uniformCached) = "";
 	GVAR(headgearCached) = "";
 	GVAR(gogglesCached) = "";
+	GVAR(pointerCached) = "";
 
 	GVAR(uniformOptionsAvailable) = false;
 	GVAR(headgearOptionsAvailable) = false;
 	GVAR(gogglesOptionsAvailable) = false;
+	GVAR(pointerOptionsAvailable) = false;
 
 	[] spawn GVAR(fnc_cachePlayerItemData);
 

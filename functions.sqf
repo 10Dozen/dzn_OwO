@@ -7,6 +7,7 @@ COMPILE_FUNCTION(fnc_getTextByShortcut);
 COMPILE_FUNCTION(fnc_switchUniform);
 COMPILE_FUNCTION(fnc_switchHeadgear);
 COMPILE_FUNCTION(fnc_switchGoggles);
+COMPILE_FUNCTION(fnc_switchPointer);
 
 COMPILE_FUNCTION(fnc_uiAddInventoryDropdownItem);
 COMPILE_FUNCTION(fnc_uiAddInventoryDisplayHandler);
