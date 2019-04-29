@@ -4,21 +4,21 @@ GVAR(Mapping) = [];
 
 if (GVAR(ApplyToVanilla)) then {
 	GVAR(Mapping) append [
-		#include "bundleTable_Uniform_A3.h" 
+		#include "bundles\bundleTable_Uniform_A3.h" 
 		,
-		#include "bundleTable_Headgear_A3.h"
+		#include "bundles\bundleTable_Headgear_A3.h"
 		,
-		#include "bundleTable_Goggles_A3.h"
+		#include "bundles\bundleTable_Goggles_A3.h"
 	];
 };
 
 if (GVAR(ApplyToCUP)) then {
 	GVAR(Mapping) append [
-		#include "bundleTable_Uniform_CUP.h" 
+		#include "bundles\bundleTable_Uniform_CUP.h" 
 		,
-		#include "bundleTable_Headgear_CUP.h"
+		#include "bundles\bundleTable_Headgear_CUP.h"
 		,
-		#include "bundleTable_Goggles_CUP.h"
+		#include "bundles\bundleTable_Goggles_CUP.h"
 	];
 };
 
@@ -27,14 +27,14 @@ if (GVAR(ApplyToRHS)) then {
 		/*
 		#include "bundleTable_Uniform_RHS.h" 
 		,*/
-		#include "bundleTable_Headgear_RHS.h"
+		#include "bundles\bundleTable_Headgear_RHS.h"
 		,
-		#include "bundleTable_Goggles_RHS.h"
+		#include "bundles\bundleTable_Goggles_RHS.h"
 	];
 };
 
 GVAR(Mapping) append [
-	#include "bundleTable_Pointers.h"
+	#include "bundles\bundleTable_Pointers.h"
 ];
 
 if !(GVAR(ExtraMappingSettings) isEqualTo "") then {

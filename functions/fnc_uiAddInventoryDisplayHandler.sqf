@@ -5,7 +5,8 @@ Description:
 	Adds inventory dialog opening/closing handler and executes some code once opened
 
 Parameters:
-	none
+	_mode -- (optional) execution mode ("INIT" (Default), "RESET", "ADD_HANDLERS", "UPDATE") <STRING> 
+	_data -- (optional) mode specific data <ANY>
 
 Returns:
 	none
@@ -66,8 +67,6 @@ switch (toUpper _mode) do {
 	};
 
 	case "ADD_HANDLERS": {
-		// [] call GVAR(fnc_cachePlayerItemData);
-
 		waitUntil { !isNull INV_DISPLAY };
 
 		// Hide dropdown on click anywhere outside dropdown
@@ -110,8 +109,7 @@ switch (toUpper _mode) do {
 				};
 
 				if (isNull _ctrlIcon) then {
-					// Add Icon if none
-					// Draw 'option available' icon
+					// Add 'Option available' Icon if none
 					private _ctrlPos = (ctrlPosition _ctrl);
 					_ctrlIcon = [
 						"",{},[],false

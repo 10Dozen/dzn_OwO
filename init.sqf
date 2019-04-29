@@ -1,10 +1,8 @@
+#include "macro.hpp"
 
 call compile preprocessFileLineNumbers format ["%1\settings.sqf", PATH];
 
 if (!hasInterface) exitWith {};
-
-#include "macro.hpp"
-
 call compile preprocessFileLineNumbers format ["%1\bundleTable.sqf", PATH];
 call compile preprocessFileLineNumbers format ["%1\functions.sqf", PATH];
 
@@ -29,5 +27,5 @@ call compile preprocessFileLineNumbers format ["%1\functions.sqf", PATH];
 	[] spawn GVAR(fnc_cachePlayerItemData);
 
 	// Start Inventory screen handler
-	[] spawn GVAR(fnc_uiAddInventoryDisplayHandler);
+	["INIT"] spawn GVAR(fnc_uiAddInventoryDisplayHandler);
 };
