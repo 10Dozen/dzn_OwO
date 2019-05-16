@@ -54,10 +54,13 @@ private _xPosSide = (_ctrlPos # 0) + (_ctrlPos # 2);
 {
 	_x params ["_class", "", ["_displayText", "CHNG"], ["_descText", "CHNG_"]];
 
+	private _optionName = _displayText call GVAR(fnc_getTextByShortcut);
+	if (_optionName isEqualTo "") then { _optionName = _displayText;	};
+
 	uiNamespace setVariable [
 		format[SVAR(Inventory_DropdownItem_%1), _forEachIndex]
 		, [
-			_displayText call GVAR(fnc_getTextByShortcut)
+			_optionName
 			, { _args call GVAR(fnc_uiHandleInventoryDropdownClick); }
 			, [_ctrlType, _class, _descText call GVAR(fnc_getTextByShortcut)]
 			, true

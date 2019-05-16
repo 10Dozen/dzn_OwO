@@ -32,24 +32,24 @@ private _itemCategory = "";
 
 switch (toUpper _ctrlType) do {
 	case "UNIFORM": {
-		_itemCategory = "Uniform";
+		_itemCategory = localize "STR_OwO_HintUniform";
 		_result = [player, _class] call GVAR(fnc_switchUniform);
 	};
 	case "HEADGEAR": {
-		_itemCategory = "Headgear";
+		_itemCategory = localize "STR_OwO_HintHeadgear";
 		_result = [player, _class] call GVAR(fnc_switchHeadgear);
 	};
 	case "GOGGLES": {
-		_itemCategory = "Goggles";
+		_itemCategory = localize "STR_OwO_HintGoggles";
 		_result = [player, _class] call GVAR(fnc_switchGoggles);
 	};
 	case "POINTER": {
-		_itemCategory = "Pointer";
+		_itemCategory = localize "STR_OwO_HintPointer";
 		_result = [player, _class] call GVAR(fnc_switchPointer);
 	};
 };
 
 if (_result) then { 
-	hint format ["%1 changed: %2", _itemCategory, _descText];
+	hint format ["%1 %2: %3", _itemCategory, localize "STR_OwO_HintChange", _descText];
 	[] spawn GVAR(fnc_cachePlayerItemData);
 };

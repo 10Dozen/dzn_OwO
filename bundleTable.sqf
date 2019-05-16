@@ -43,18 +43,18 @@ if !(GVAR(ExtraMappingSettings) isEqualTo "") then {
 
 
 GVAR(StringShortcuts) = [
-	 "CHNG", "Change"
-	,"CHNG_", "Changed"
+	 "CHNG", localize "STR_OwO_CHNG"
+	,"CHNG_", localize "STR_OwO_CHNG_"
 
 	/* Uniform */
-	,"F", "Default"
-	,"F_", "Changed to default"
+	,"F", localize "STR_OwO_F"
+	,"F_", localize "STR_OwO_F_"
 
-	,"R", "Rolled up"
-	,"R_", "Sleeves was rolled up"
+	,"R", localize "STR_OwO_R"
+	,"R_", localize "STR_OwO_R_"
 
-	,"R2", "Rolled up high"
-	,"R2_", "Sleeves was rolled up high"
+	,"R2", localize "STR_OwO_R2"
+	,"R2_", localize "STR_OwO_R2_"
 
 	,"RG", "Rolled up/Gloves"
 	,"RG_", "Sleeves was rolled up and gloves was put on"
@@ -62,17 +62,20 @@ GVAR(StringShortcuts) = [
 	,"RG2", "Rolled up/Gloves (High)"
 	,"RG2_", "Sleeves was rolled up high and gloves was put on"
 
-	,"RJ", "Removed jacket"
-	,"RJ_", "Jacked was removed"
+	,"RJ", localize "STR_OwO_RJ"
+	,"RJ_", localize "STR_OwO_RJ_"
 
-	,"H", "Hood on"
-	,"H_", "Hood was put on"
+	,"H", localize "STR_OwO_H"
+	,"H_", localize "STR_OwO_H_"
 
-	,"G", "Gloves"
-	,"G_", "Gloves were put on"
+	,"HOff", localize "STR_OwO_HOff"
+	,"HOff_", localize "STR_OwO_HOff_"
 
-	,"K", "Kneepads"
-	,"K_", "Kneepads were put on"
+	,"G", localize "STR_OwO_G"
+	,"G_", localize "STR_OwO_G_"
+
+	,"K", localize "STR_OwO_K"
+	,"K_", localize "STR_OwO_K_"
 
 	,"GK", "Gloves/Kneepads"
 	,"GK_", "Gloves and kneepads were put on"
@@ -92,6 +95,17 @@ GVAR(StringShortcuts) = [
 	,"GO", "Gloves only"
 	,"GO_", "Gloves only was put on"
 
+	,"CU", localize "STR_OwO_CU"
+	,"CU_", localize "STR_OwO_CU_"
+
+	,"CD", localize "STR_OwO_CD"
+	,"CD_", localize "STR_OwO_CD_"
+
+	,"BU", localize "STR_OwO_BU"
+	,"BU_", localize "STR_OwO_BU_"
+
+	,"UB", localize "STR_OwO_BD"
+	,"UB_", localize "STR_OwO_BD_"
 
 	/* Headgear */
 	,"RM", "Remove mask"

@@ -40,5 +40,150 @@
 				<Original>Additional OWO mapping for items (execute [] spawn dzn_OwO_fnc_configure to generate data)</Original>
 			</Key>
 		</Container>
+
+		
+		<Container name="OptionBundleText">
+			<Key ID="STR_OwO_HintChange">
+				<Original>changed</Original>
+				<Russian>изменены</Russian>
+			</Key>
+			<Key ID="STR_OwO_HintUniform">
+				<Original>Uniform</Original>
+				<Russian>Униформа</Russian>
+			</Key>
+			<Key ID="STR_OwO_HintHeadgear">
+				<Original>Headgear</Original>
+				<Russian>Головной убор</Russian>
+			</Key>
+			<Key ID="STR_OwO_HintGoggles">
+				<Original>Goggles</Original>
+				<Russian>Маска/очки</Russian>
+			</Key>
+			<Key ID="STR_OwO_HintPointer">
+				<Original>Pointer</Original>
+				<Russian>Целеуказатель/Фонарь</Russian>
+			</Key>
+			
+			<!-- Bundle options -->
+
+			<Key ID="STR_OwO_CHNG">
+				<Original>Change</Original>
+				<Russian>Изменить</Russian>
+			</Key>
+			<Key ID="STR_OwO_CHNG_">
+				<Original>Changed</Original>
+				<Russian>Изменено</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_F">
+				<Original>Default</Original>
+				<Russian>Исходное</Russian>
+			</Key>
+			<Key ID="STR_OwO_F_">
+				<Original>Changed to default</Original>
+				<Russian>Изменено на исходное</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_R">
+				<Original>Rolled up</Original>
+				<Russian>Закатанные рукава</Russian>
+			</Key>
+			<Key ID="STR_OwO_R_">
+				<Original>Sleeves was rolled up</Original>
+				<Russian>Рукава были закатаны</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_R2">
+				<Original>Rolled up (High)</Original>
+				<Russian>Закатанные рук. (Выс)</Russian>
+			</Key>
+			<Key ID="STR_OwO_R2_">
+				<Original>Sleeves was rolled up (high)</Original>
+				<Russian>Рукава были закатаны (высоко)</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_RJ">
+				<Original>Remove jacket</Original>
+				<Russian>Снять китель</Russian>
+			</Key>
+			<Key ID="STR_OwO_RJ_">
+				<Original>Jacked was removed</Original>
+				<Russian>Китель был снят</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_H">
+				<Original>Hood on</Original>
+				<Russian>Капюшон надеть</Russian>
+			</Key>
+			<Key ID="STR_OwO_H_">
+				<Original>Hood was put on</Original>
+				<Russian>Капюшон был надет</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_HOff">
+				<Original>Hood off</Original>
+				<Russian>Капюшон снять</Russian>
+			</Key>
+			<Key ID="STR_OwO_HOff_">
+				<Original>Hood was put oаа</Original>
+				<Russian>Капюшон был снят</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_G">
+				<Original>Gloves</Original>
+				<Russian>Перчатки</Russian>
+			</Key>
+			<Key ID="STR_OwO_G_">
+				<Original>Gloves were put on</Original>
+				<Russian>Перчатки надеты</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_K">
+				<Original>Kneepads</Original>
+				<Russian>Наколенники</Russian>
+			</Key>
+			<Key ID="STR_OwO_K_">
+				<Original>Kneepads were put on</Original>
+				<Russian>Наколенники надеты</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_CU">
+				<Original>Collar up</Original>
+				<Russian>Воротник поднять</Russian>
+			</Key>
+			<Key ID="STR_OwO_CU_">
+				<Original>Collar was turned up</Original>
+				<Russian>Воротник поднят</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_CD">
+				<Original>Collar down</Original>
+				<Russian>Воротник опустить</Russian>
+			</Key>
+			<Key ID="STR_OwO_CD_">
+				<Original>Collar was turned down</Original>
+				<Russian>Воротник опущен</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_BU">
+				<Original>Button up shirt</Original>
+				<Russian>Застегнуть верх</Russian>
+			</Key>
+			<Key ID="STR_OwO_BU_">
+				<Original>Shirt was buttoned up</Original>
+				<Russian>Китель был застегнут</Russian>
+			</Key>
+
+			<Key ID="STR_OwO_BD">
+				<Original>Unbutton shirt</Original>
+				<Russian>Расстегнуть верх</Russian>
+			</Key>
+			<Key ID="STR_OwO_BD_">
+				<Original>Shirt was unbuttoned</Original>
+				<Russian>Китель был расстегнут</Russian>
+			</Key>
+
+
+		</Container>
 	</Package>
 </Project>

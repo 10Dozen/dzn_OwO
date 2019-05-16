@@ -37,7 +37,8 @@ if (isNil SVAR(fnc_addWeaponViaCrutches)) then {
 
 		if (isNil { player getVariable SVAR(ContainerLoader) }) then {
 			_u = (createGroup civilian) createUnit ["C_man_1",position _container,[],0,"CAN_COLLIDE"];
-			_u hideObjectGlobal true;
+			[_u, true] remoteExec ["hideObjectGlobal", 2];
+			_u hideObject true;
 			_u disableCollisionWith player;
 			_u allowDamage false;
 			_u disableAI "ANIM";
