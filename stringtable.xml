@@ -32,6 +32,13 @@
 			<Key ID="STR_OwO_ApplyToRHS_desc">
 				<Original>Apply OWO feature to vanilla RHS items</Original>
 			</Key>
+			
+			<Key ID="STR_OwO_ApplyToYuE">
+				<Original>Apply for YuEMod items</Original>
+			</Key>
+			<Key ID="STR_OwO_ApplyToYuE_desc">
+				<Original>Apply OWO feature to vanilla YuEMod items</Original>
+			</Key>
 
 			<Key ID="STR_OwO_ExtraMappingSettings">
 				<Original>Additional mapping</Original>
@@ -41,7 +48,6 @@
 			</Key>
 		</Container>
 
-		
 		<Container name="OptionBundleText">
 			<Key ID="STR_OwO_HintChange">
 				<Original>changed</Original>
@@ -182,7 +188,24 @@
 				<Original>Shirt was unbuttoned</Original>
 				<Russian>Китель был расстегнут</Russian>
 			</Key>
-
+			
+			<Key ID="STR_OwO_OM">
+				<Original>Open face</Original>
+				<Russian>Открыть лицо</Russian>
+			</Key>
+			<Key ID="STR_OwO_OM_">
+				<Original>Mask was pulled off and face became opened</Original>
+				<Russian>Маска была стянута и открывает лицо</Russian>
+			</Key>
+			
+			<Key ID="STR_OwO_CM">
+				<Original>Hide face</Original>
+				<Russian>Скрыть лицо</Russian>
+			</Key>
+			<Key ID="STR_OwO_CM_">
+				<Original>Mask was pulled on and face became hidden</Original>
+				<Russian>Маска была натянута и закрывает лицо</Russian>
+			</Key>
 
 		</Container>
 	</Package>

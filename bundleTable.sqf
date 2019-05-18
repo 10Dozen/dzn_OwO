@@ -33,6 +33,16 @@ if (GVAR(ApplyToRHS)) then {
 	];
 };
 
+if (GVAR(ApplyToYuE)) then {
+	GVAR(Mapping) append [
+		#include "bundles\bundleTable_Uniform_YuEmod.h" 
+		,
+		#include "bundles\bundleTable_Headgear_YuEmod.h" 
+		,
+		#include "bundles\bundleTable_Goggles_YuEmod.h"
+	];
+};
+
 GVAR(Mapping) append [
 	#include "bundles\bundleTable_Pointers.h"
 ];
@@ -110,6 +120,12 @@ GVAR(StringShortcuts) = [
 	/* Headgear */
 	,"RM", "Remove mask"
 	,"RM_", "Mask was removed"
+	
+	,"OM", localize "STR_OwO_OM"
+	,"OM_", localize "STR_OwW_OM_"
+	
+	,"CM", localize "STR_OwO_CM"
+	,"CM_", localize "STR_OwW_CM_"
 
 	,"AM", "Attach mask"	
 	,"AM_", "Mask was attached"

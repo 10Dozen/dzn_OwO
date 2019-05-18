@@ -43,6 +43,12 @@ private _add = {
 ] call _add;
 
 [
+	"ApplyToYuE"
+	, "CHECKBOX"
+	, true 
+] call _add;
+
+[
 	"ExtraMappingSettings"
 	, "EDITBOX"
 	, "" 
